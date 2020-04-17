@@ -1,0 +1,63 @@
+.letter-inputs{
+  display: flex;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+
+  .label {
+    height: 35px;
+    width: 30px;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-sizing: border-box;
+  }
+
+  .letter-input {
+    box-sizing: border-box;
+    width: 24px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gainsboro;
+
+    .input {
+      height: 10px;
+      width: 100%;
+      border-left: 1px solid #9E9E9E;
+      &::before, &::after {
+        display: none;
+      }
+
+      input {
+        text-align: center;
+      }
+
+      &.black {
+        input {
+          color: black;
+        }
+      }
+
+      &.red {
+        input {
+          color: red;
+        }
+      }
+    }
+
+    &.first{
+      .input {
+        border-left: none;
+      }
+    }
+
+    &.last {
+      .input {
+        border-right: 1px solid #9E9E9E;
+      }
+    }
+
+  }
+}
