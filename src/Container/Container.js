@@ -17,7 +17,7 @@ export default class Container extends Component{
 
     render() {
         const {result} = this.state;
-        //console.log(result)
+
         return (
             <div style={{margin: 100, width: 800, border: '1px solid black'}}>
                 <Task2 result={result} onChange={this.onChange} finished={false} fResults={<div>FINISH</div>} timeOut={true}/>
