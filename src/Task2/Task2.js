@@ -29,7 +29,7 @@ export default class Task2 extends Component{
             };
 
             let data = {
-                completed: this.checkResult(newResult),
+                completed: true,
                 result: newResult
             };
 
@@ -37,9 +37,9 @@ export default class Task2 extends Component{
         }
     };
 
-    checkResult = result => {
-        return  result.words.filter(w => w).length === 18
-    };
+    // checkResult = result => {
+    //     return  result.words.filter(w => w).length === 18
+    // };
 
     render() {
         const {finished, fResults, timeOut, result} = this.props;
