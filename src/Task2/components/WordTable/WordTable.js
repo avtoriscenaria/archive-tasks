@@ -22,7 +22,7 @@ export default class WordTable extends Component{
                         {
                             !timeOut ? w :
                                 <Input
-                                    className={'word-input'}
+                                    className={`word-input${(result.words || [])[i] ? ' -filled' : ''}`}
                                     value={(result.words || [])[i] || ''}
                                     onChange={e => this.onChange(e.target.value, i)}
                                 />

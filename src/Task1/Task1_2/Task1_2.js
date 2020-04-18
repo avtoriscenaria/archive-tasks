@@ -3,7 +3,7 @@ import translations from '../constants/transltions';
 import PropTypes from 'prop-types';
 import './styles.scss';
 import LetterInputs from "../components/LetterInputs";
-import table from './table2.png';
+import table from './table2.jpg';
 
 const red = 'к', black = 'ч';
 
@@ -12,7 +12,6 @@ export default class  Task1_2 extends Component{
     static propTypes = {
         result: PropTypes.object,
         onChange: PropTypes.func.isRequired,
-        onFinish: PropTypes.func.isRequired,
         timeOut: PropTypes.bool,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
@@ -34,7 +33,7 @@ export default class  Task1_2 extends Component{
     };
 
     onChange = async (v, i, param) => {
-        const {result, onChange, onFinish} = this.props;
+        const {result, onChange} = this.props;
         //console.log('CHANGE')
 
         if (onChange) {
@@ -45,13 +44,12 @@ export default class  Task1_2 extends Component{
                 [param]: arr
             };
 
-            await onChange(newResult);
+            let data = {
+                complete: this.checkResult(newResult),
+                result: newResult
+            };
 
-            if ( this.checkResult(newResult) ) {
-                if (onFinish) {
-                    onFinish(newResult)
-                }
-            }
+            await onChange(data);
 
             let _param = param === 'black' ? 'red' : 'black';
             let _i = param === 'black' ? i+1 : i;

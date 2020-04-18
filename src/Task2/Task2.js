@@ -11,7 +11,6 @@ export default class Task2 extends Component{
     static propTypes = {
         result: PropTypes.object,
         onChange: PropTypes.func.isRequired,
-        onFinish: PropTypes.func.isRequired,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
         timeOut: PropTypes.bool
@@ -29,8 +28,17 @@ export default class Task2 extends Component{
                 data: result.data ? result.data : words
             };
 
-            await onChange(newResult)
+            let data = {
+                complete: this.checkResult(newResult),
+                result: newResult
+            };
+
+            await onChange(data);
         }
+    };
+
+    checkResult = result => {
+        return  result.words.filter(w => w).length === 18
     };
 
     render() {

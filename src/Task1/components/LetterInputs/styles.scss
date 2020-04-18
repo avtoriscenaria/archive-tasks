@@ -10,7 +10,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    color: #FFFFFF;
     box-sizing: border-box;
   }
 
@@ -31,18 +39,24 @@
       }
 
       input {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
         text-align: center;
       }
 
       &.black {
         input {
-          color: black;
+          color: #212121;
         }
       }
 
       &.red {
         input {
-          color: red;
+          color: #C63530;
         }
       }
     }

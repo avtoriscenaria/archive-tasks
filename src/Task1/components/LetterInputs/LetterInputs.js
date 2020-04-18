@@ -50,7 +50,9 @@ export default class LetterInputs extends Component{
 
         return arr === null ? null :(
             <div className='letter-inputs'>
-                <div className='label' style={{backgroundColor: color}}>{label}</div>
+                <div className='label'
+                     style={{backgroundColor: color === 'black' ? '#212121' : '#C63530'}}
+                >{label}</div>
                 {
                     arr.map((el, i) =>
                         <div className={
@@ -59,7 +61,7 @@ export default class LetterInputs extends Component{
                         } key={`input-${i}`}
                              id={`input-${color}-${i}`}
                              style={{
-                                 borderColor: answers[i] || answers.filter((el, _i) => _i < i && el).length === i ? color : ''
+                                 borderColor: answers[i] || !enabled(i) ? color === 'black' ? '#212121' : '#C63530' : ''
                              }}
                         >
                             <Input

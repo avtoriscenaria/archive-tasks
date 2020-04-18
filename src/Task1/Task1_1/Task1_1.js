@@ -3,7 +3,7 @@ import translations from '../constants/transltions';
 import PropTypes from 'prop-types';
 import './styles.scss';
 import LetterInputs from "../components/LetterInputs";
-import table from './table1.png';
+import table from './table1.jpg';
 
 const red = 'к', black = 'ч';
 
@@ -12,7 +12,6 @@ export default class  Task1_1 extends Component{
     static propTypes = {
         result: PropTypes.object,
         onChange: PropTypes.func.isRequired,
-        onFinish: PropTypes.func.isRequired,
         finished: PropTypes.bool,
         fResults: PropTypes.object,
     };
@@ -46,7 +45,7 @@ export default class  Task1_1 extends Component{
     };
 
     onChange = async (v, i, param) => {
-        const {result, onChange, onFinish} = this.props;
+        const {result, onChange} = this.props;
 
         if (onChange) {
             //console.log('CHANGE', v);
@@ -57,13 +56,12 @@ export default class  Task1_1 extends Component{
                 [param]: arr
             };
 
-            await onChange(newResult);
+            let data = {
+                complete: this.checkResult(newResult),
+                result: newResult
+            };
 
-            if ( this.checkResult(newResult) ) {
-                if (onFinish) {
-                    onFinish(newResult)
-                }
-            }
+            await onChange(data);
 
             let input = document.getElementById(`input-${param}-${i+1}`);
                 if (input) {
