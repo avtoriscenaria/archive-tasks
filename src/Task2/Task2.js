@@ -29,7 +29,7 @@ export default class Task2 extends Component{
             };
 
             let data = {
-                complete: this.checkResult(newResult),
+                completed: this.checkResult(newResult),
                 result: newResult
             };
 
