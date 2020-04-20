@@ -14,12 +14,24 @@ export default class ResultsTable extends Component{
         onChangeCrumbs: PropTypes.func
     };
 
+    state={
+        start: new Date(),
+        end: new Date()
+    };
+
+    onChangeDate = (day, param) => {
+        const {onChangeDate} = this.props;
+
+        this.setState({[param]:day})
+    };
+
     render() {
-        const {data, onChoose, onChangeDate, crumbs, onChangeCrumbs} = this.props;
+        const {data, onChoose, crumbs, onChangeCrumbs} = this.props;
+        const {start, end} = this.state;
 
         return (
             <div className='results-table'>
-                <MainHeader onChangeDate={onChangeDate} crumbs={crumbs} onChangeCrumbs={onChangeCrumbs}/>
+                <MainHeader onChangeDate={this.onChangeDate} crumbs={crumbs} onChangeCrumbs={onChangeCrumbs} start={start} end={end}/>
                 <Divider/>
                 <Table
                     data={data}

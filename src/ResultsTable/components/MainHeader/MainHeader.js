@@ -8,7 +8,7 @@ export default class MainHeader extends Component{
 
 
     render() {
-        const {onChangeDate, crumbs} = this.props;
+        const {onChangeDate, crumbs, start, end} = this.props;
 
         return (
             <div className={'main-header'}>
@@ -16,9 +16,9 @@ export default class MainHeader extends Component{
                     <Breadcrumbs crumbs={crumbs}/>
                 </div>
                 <div className='mh-datepickers'>
-                    <DatePickers onChangeDate={v => onChangeDate(v, 'start')}/>
+                    <DatePickers onChangeDate={v => onChangeDate(v, 'start')} value={start} maxDate={end}/>
                     -
-                    <DatePickers onChangeDate={v => onChangeDate(v, 'end')}/>
+                    <DatePickers onChangeDate={v => onChangeDate(v, 'end')} value={end} minDate={start}/>
                 </div>
             </div>
         );

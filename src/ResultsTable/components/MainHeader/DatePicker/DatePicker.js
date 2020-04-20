@@ -46,7 +46,7 @@ const makeDefaultValue = (v) => {
     }
 };
 
-export default function DatePickers({value, onChangeDate}) {
+export default function DatePickers({value, onChangeDate, minDate, maxDate}) {
     const classes = useStyles();
     const [open, isOpen] = useState(false);
 
@@ -56,7 +56,7 @@ export default function DatePickers({value, onChangeDate}) {
             isOpen(false)
         }
     };
-    console.log(open)
+
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container justify="space-around" className={'date-picker'}>
@@ -66,10 +66,13 @@ export default function DatePickers({value, onChangeDate}) {
                     variant="inline"
                     format="MM/dd/yyyy"
                     margin="normal"
+                    minDate={minDate}
+                    maxDate={maxDate}
                     value={value || new Date()}
                     open={open}
-                    onFocus={() => isOpen(true)}
-                    //onBlur={() => isOpen(false)}
+                    disabled={true}
+                    onClick={() => isOpen(true)}
+                    onClose={() => isOpen(false)}
                     onChange={chooseDate}
                     KeyboardButtonProps={{
                         'aria-label': 'change date',

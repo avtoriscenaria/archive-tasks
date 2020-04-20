@@ -13,9 +13,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #FAFAFA;
+    cursor: pointer;
 
     input {
       text-align: center;
+      padding: 0;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      color: #525252;
     }
 
     .MuiInputAdornment-root {
