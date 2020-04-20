@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
@@ -26,17 +25,43 @@ const columns = [
     {name: 'date'}
 ];
 
+const makeTime = (time) => {
+
+    let hours = Math.floor(time/3600000);
+    let minutes = Math.floor((time-hours)/60000);
+    let seconds = Math.floor((time-hours-minutes)/1000);
+
+    return `${hours}:${minutes<10 ? '0'+minutes : minutes}:${seconds<10 ? '0'+seconds : seconds}`
+
+};
+
+const calculateSum = (data, param) => {
+
+    let res = 0;
+    for (let task of data) {
+        res += task[param]
+    }
+
+    if (param === 'time') {
+        return makeTime(res)
+    } else {
+        return res
+    }
+};
+
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
+        boxShadow: 'none',
+        paddingTop: 16
     }
 });
 
-export default function Table({data}) {
+export default function Table({data, onChange}) {
     const classes = useStyles();
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer className={classes.table} component={Paper}>
             <_Table className={'r-table'} aria-label="simple table">
                 <TableHead className={`rt-header`}>
                     <TableRow>
@@ -63,13 +88,33 @@ export default function Table({data}) {
                 <TableBody className={`rt-body`}>
                     {data.map((row, i) => (
                         <TableRow key={`${row.name}-${i}`}>
-                            <TableCell component="th" scope="row">
-                                {row.name}
+                            <TableCell className={`rtb-cell checkbox`}>
+                                <div>
+                                    <Checkbox icon={<StarBorderIcon />} checked={row.enabled} checkedIcon={<StarIcon />} name="checkedH" onChange={e => onChange(row._id, e.target.checked)}/>
+                                </div>
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            <TableCell className={`rtb-cell name-email`}>
+                                <div>
+                                    {`${row.name}\n${row.email}`}
+                                </div>
+                            </TableCell >
+                            {
+                                columns.map((c, i) => i < 2 ? null : (
+                                    <TableCell key={`cell-${i}`} className={`rtb-cell ${c.name}`}>
+                                        <div className='results-sum'>
+                                            {
+                                                c.name === 'task' ? translations.total :
+                                                    c.name === 'date' ? row.date :
+                                                   calculateSum(row.data, c.name)
+                                            }
+                                        </div>
+                                        {
+                                            c.name === 'date' ? null :
+                                            row.data.map((r, _i) => <div key={`result-${_i}`} className='small-table-cell'>{c.name === 'time' ? makeTime(r[c.name]): r[c.name]}</div>)
+                                        }
+                                    </TableCell>
+                                ))
+                            }
                         </TableRow>
                     ))}
                 </TableBody>

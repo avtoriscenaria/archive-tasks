@@ -23,11 +23,24 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
       }
 
       &.star {
         width: 64px;
         text-align: center;
+        height: 32px;
+        span {
+          padding: 0;
+          svg {
+            width: 22px;
+            height: 22px;
+          }
+        }
       }
       &.name_email {
         width: 216px;
@@ -50,6 +63,70 @@
       }
       &.date {
         width: 130px;
+      }
+    }
+  }
+
+  .rt-body {
+    background-color: #F5F5F5;
+
+    .rtb-cell {
+      padding: 17px 0;
+      text-align: center;
+      vertical-align: top;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 15px;
+      letter-spacing: 0.16px;
+      font-feature-settings: 'pnum' on, 'lnum' on;
+      color: #525252;
+
+      &.checkbox {
+        .MuiCheckbox-colorSecondary.Mui-checked {
+          color: #525252;
+          &:hover {
+            background-color: #EBEBEB;
+          }
+        }
+
+        .MuiIconButton-colorSecondary:hover {
+          background-color: #EBEBEB;
+        }
+      }
+
+      .results-sum {
+        padding-bottom: 10px;
+        height: 16px;
+        //box-sizing: border-box;
+      }
+
+      .small-table-cell {
+        height: 16px;
+      }
+
+      &.name-email {
+        white-space: pre-line;
+        text-align: left;
+        div {
+          min-height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+      }
+
+      &.time, &.task, &.right, &.wrong, &.empty, &.date {
+        div {
+          text-align: right;
+        }
+      }
+
+      &.date {
+        div {
+          padding-right: 22px;
+        }
       }
     }
   }

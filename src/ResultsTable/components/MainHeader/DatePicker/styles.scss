@@ -1,0 +1,8 @@
+.date-picker {
+  margin: 0 5px;
+  .MuiInputBase-root {
+    &:before, &:after {
+      display: none;
+    }
+  }
+}
