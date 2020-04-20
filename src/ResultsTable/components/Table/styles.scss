@@ -1,0 +1,56 @@
+.r-table {
+  width: 906px;
+
+  .rt-header {
+    //height: 48px;
+    //padding-top: 16px;
+    //padding: 8px 0 8px 22px;
+
+    .rth-cell {
+      padding: 0;
+      box-sizing: border-box;
+
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 15px;
+      text-align: right;
+      letter-spacing: 0.25px;
+      color: #858585;
+
+      .cell-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      &.star {
+        width: 64px;
+        text-align: center;
+      }
+      &.name_email {
+        width: 216px;
+        text-align: left;
+      }
+      &.task {
+        width: 80px;
+      }
+      &.time {
+        width: 90px;
+      }
+      &.right {
+        width: 125px;
+      }
+      &.wrong {
+        width: 88px;
+      }
+      &.empty {
+        width: 90px;
+      }
+      &.date {
+        width: 130px;
+      }
+    }
+  }
+}

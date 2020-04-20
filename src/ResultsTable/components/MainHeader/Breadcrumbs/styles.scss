@@ -1,0 +1,17 @@
+.breadcrumbs {
+  .MuiBreadcrumbs-ol {
+    .MuiBreadcrumbs-li {
+      a, p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.15px;
+        color: #525252;
+      }
+    }
+  }
+}

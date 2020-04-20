@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Task1_1 from '../Task1/Task1_1';
 import Task1_2 from '../Task1/Task1_2';
 import Task2 from '../Task2'
+import ResultsTable from "../ResultsTable";
 
 
 export default class Container extends Component{
@@ -11,7 +12,7 @@ export default class Container extends Component{
     };
 
     onChange = r => {
-        //console.log(r.complete);
+        //console.log(r);
         this.setState({result: r.result})
     };
 
@@ -19,7 +20,8 @@ export default class Container extends Component{
         const {result} = this.state;
 
         return (
-            <div style={{margin: 100, width: 800, border: '1px solid black'}}>
+            <div style={{margin: 100, width: 1000, border: '1px solid black'}}>
+                {/*<ResultsTable/>*/}
                 <Task2 result={result} onChange={this.onChange} finished={false} fResults={<div>FINISH</div>} timeOut={true}/>
             </div>
         )
