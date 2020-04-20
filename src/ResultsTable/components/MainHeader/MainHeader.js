@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Breadcrumbs from './Breadcrumbs';
 import './styles.scss';
-import translations from '../../constants/translations';
 import DatePickers from "./DatePicker";
 
 
@@ -17,9 +16,9 @@ export default class MainHeader extends Component{
                     <Breadcrumbs crumbs={crumbs}/>
                 </div>
                 <div className='mh-datepickers'>
-                    <DatePickers/>
+                    <DatePickers onChangeDate={v => onChangeDate(v, 'start')}/>
                     -
-                    <DatePickers/>
+                    <DatePickers onChangeDate={v => onChangeDate(v, 'end')}/>
                 </div>
             </div>
         );

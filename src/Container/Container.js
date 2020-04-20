@@ -89,8 +89,8 @@ export default class Container extends Component{
         }
     };
 
-    onChangeDate = () => {
-
+    onChangeDate = (e, v) => {
+        console.log(e, v)
     };
 
     onChangeCrumbs =() => {
@@ -101,7 +101,9 @@ export default class Container extends Component{
         const {result, crumbs} = this.state;
 
         return (
-            <div style={{margin: 100, width: 1000, border: '1px solid black'}}>
+            <div style={{margin: 100, width: 1000,
+            //    border: '1px solid black'
+            }}>
                 <ResultsTable data={this.state.data} onChoose={this.onChoose}
                               crumbs={crumbs} onChangeDate={this.onChangeDate}
                               onChangeCrumbs={this.onChangeCrumbs}

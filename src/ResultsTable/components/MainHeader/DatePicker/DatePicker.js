@@ -1,6 +1,14 @@
-import React from 'react';
+
+import React, {useState} from 'react';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker
+} from '@material-ui/pickers';
 import './styles.scss'
 
 const useStyles = makeStyles((theme) => ({
@@ -38,22 +46,53 @@ const makeDefaultValue = (v) => {
     }
 };
 
-export default function DatePickers({value}) {
+export default function DatePickers({value, onChangeDate}) {
     const classes = useStyles();
+    const [open, isOpen] = useState(false);
 
+    const chooseDate = (date) => {
+        if (onChangeDate) {
+            onChangeDate(date);
+            isOpen(false)
+        }
+    };
+    console.log(open)
     return (
-        <form className={`${classes.container} date-picker`} noValidate>
-            <TextField
-                type="date"
-                defaultValue={makeDefaultValue(value)}
-                className={classes.textField}
-                value={value}
-                onFocus={v => console.log('FOCUS')}
-                onChange={v => console.log(v.target.value)}
-                InputLabelProps={{
-                   // shrink: true,
-                }}
-            />
-        </form>
-    );
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid container justify="space-around" className={'date-picker'}>
+                <KeyboardDatePicker
+                    className={'picker-input'}
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    value={value || new Date()}
+                    open={open}
+                    onFocus={() => isOpen(true)}
+                    //onBlur={() => isOpen(false)}
+                    onChange={chooseDate}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                    }}
+                />
+            </Grid>
+        </MuiPickersUtilsProvider>
+    )
+
+    // return (
+    //     <form className={`${classes.container} date-picker`} noValidate>
+    //         <TextField
+    //             type="date"
+    //             defaultValue={makeDefaultValue(value)}
+    //             className={classes.textField}
+    //             value={value}
+    //             open={false}
+    //             onFocus={v => console.log('FOCUS')}
+    //             onChange={v => console.log(v.target.value)}
+    //             InputLabelProps={{
+    //                // shrink: true,
+    //             }}
+    //         />
+    //     </form>
+    // );
 }
