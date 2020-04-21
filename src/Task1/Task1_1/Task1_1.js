@@ -86,7 +86,7 @@ export default class  Task1_1 extends Component{
         return (
             <div className='task1_1'>
                 <div className='name'>{translations.task1_1_name}</div>
-                <div className='description'>
+                <div className={`description${finished ? ' -finished' : ''}`}>
                     {
                         finished ? fResults : translations.task1_1_description
                     }

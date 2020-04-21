@@ -108,8 +108,8 @@ export default class Container extends Component{
                 {/*              crumbs={crumbs} onChangeDate={this.onChangeDate}*/}
                 {/*              onChangeCrumbs={this.onChangeCrumbs}*/}
                 {/*/>*/}
-                <Task1_2 result={result} onChange={this.onChange}
-                       finished={false} fResults={<div>FINISH</div>} timeOut={true}/>
+                <Task2 result={result} onChange={this.onChange}
+                       finished={!false} fResults={<div>FINISH</div>} timeOut={true}/>
             </div>
         )
     }

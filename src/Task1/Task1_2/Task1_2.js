@@ -91,7 +91,7 @@ export default class  Task1_2 extends Component{
         return (
             <div className='task1_2'>
                 <div className='name'>{translations.task1_2_name}</div>
-                <div className='description'>
+                <div className={`description${finished ? ' -finished' : ''}`}>
                     {
                         finished ? fResults : translations.task1_2_description
                     }
