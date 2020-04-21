@@ -104,11 +104,12 @@ export default class Container extends Component{
             <div style={{margin: 100, width: 1000,
             //    border: '1px solid black'
             }}>
-                <ResultsTable data={this.state.data} onChoose={this.onChoose}
-                              crumbs={crumbs} onChangeDate={this.onChangeDate}
-                              onChangeCrumbs={this.onChangeCrumbs}
-                />
-                {/*<Task2 result={result} onChange={this.onChange} finished={false} fResults={<div>FINISH</div>} timeOut={true}/>*/}
+                {/*<ResultsTable data={this.state.data} onChoose={this.onChoose}*/}
+                {/*              crumbs={crumbs} onChangeDate={this.onChangeDate}*/}
+                {/*              onChangeCrumbs={this.onChangeCrumbs}*/}
+                {/*/>*/}
+                <Task2 result={result} onChange={this.onChange}
+                       finished={true} fResults={<div>FINISH</div>} timeOut={true}/>
             </div>
         )
     }
