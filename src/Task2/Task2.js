@@ -33,8 +33,7 @@ export default class Task2 extends Component{
             arr[i] = v;
             let newResult = {
                 ...result,
-                words: arr,
-                data: result.data ? result.data : words
+                words: arr
             };
 
             let data = {
