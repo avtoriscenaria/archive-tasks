@@ -110,7 +110,7 @@ export default class Container extends Component{
                 {/*              onChangeCrumbs={this.onChangeCrumbs}*/}
                 {/*/>*/}
                 <Task1_2 result={result} onChange={this.onChange}
-                       finished={false} fResults={<div>FINISH</div>} timeOut={true}/>
+                       finished={!false} fResults={<div>FINISH</div>} timeOut={true}/>
             </div>
         )
     }
